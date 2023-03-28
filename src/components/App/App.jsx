@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContacts } from 'redux/operations';
 import { GlobalStyle } from 'components/GlobalStyle';
 import { Container } from './App.styled';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 import { Toaster } from 'react-hot-toast';
+import { getError, getIsLoading } from 'redux/selectors';
+import Loader from 'components/Loader';
 
 function App() {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
+  const error = useSelector(getError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   return (
     <Container>
       <h1>Phonebook</h1>
@@ -14,6 +26,7 @@ function App() {
 
       <h2>Contacts</h2>
       <Filter />
+      {isLoading && !error && <Loader />}
       <ContactList />
 
       <Toaster
