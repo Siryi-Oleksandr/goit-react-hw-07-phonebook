@@ -15,20 +15,20 @@ export const contactsSlice = createSlice({
     error: null,
   },
   // Об'єкт редюсерів
-  reducers: {
-    addContact(state, action) {
-      state.push(action.payload);
-    },
-    deleteContact(state, action) {
-      return state.filter(contact => contact.id !== action.payload);
-    },
-    editContact(state, action) {
-      const index = state.findIndex(
-        contact => contact.id === action.payload.id
-      );
-      state.splice(index, 1, action.payload);
-    },
-  },
+  // reducers: {
+  //   addContact(state, action) {
+  //     state.push(action.payload);
+  //   },
+  //   deleteContact(state, action) {
+  //     return state.filter(contact => contact.id !== action.payload);
+  //   },
+  //   editContact(state, action) {
+  //     const index = state.findIndex(
+  //       contact => contact.id === action.payload.id
+  //     );
+  //     state.splice(index, 1, action.payload);
+  //   },
+  // },
 
   extraReducers: {
     [fetchContacts.pending](state) {
@@ -47,4 +47,4 @@ export const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-export const { addContact, deleteContact, editContact } = contactsSlice.actions;
+// export const { addContact, deleteContact, editContact } = contactsSlice.actions;

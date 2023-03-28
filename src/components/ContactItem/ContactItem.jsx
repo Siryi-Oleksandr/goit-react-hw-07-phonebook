@@ -11,7 +11,7 @@ import {
 } from 'components/ContactItem/ContactItem.styled';
 import { Controls, ControlsSave } from 'components/Control/Controls';
 import EditForm from 'components/EditForm';
-import { editContact, deleteContact } from '../../redux/contactsSlice';
+// import { editContact, deleteContact } from '../../redux/contactsSlice';
 
 function ContactItem({ name, number, id }) {
   const [editName, setEditName] = useState(name);
@@ -21,7 +21,7 @@ function ContactItem({ name, number, id }) {
   const dispatch = useDispatch();
 
   const handleDeleteContact = id => {
-    dispatch(deleteContact(id));
+    // dispatch(deleteContact(id));
   };
 
   const handleEditContact = (newName, newNumber) => {
@@ -32,13 +32,13 @@ function ContactItem({ name, number, id }) {
       setEditNumber(prevNumber => (newNumber ? newNumber : prevNumber));
       setIsEdit(false);
 
-      dispatch(
-        editContact({
-          id: id,
-          name: newName ? newName : name,
-          number: newNumber ? newNumber : number,
-        })
-      );
+      // dispatch(
+      //   editContact({
+      //     id: id,
+      //     name: newName ? newName : name,
+      //     number: newNumber ? newNumber : number,
+      //   })
+      // );
     }
   };
 

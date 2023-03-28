@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormStyled, FormLabel, Input, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/contactsSlice';
+// import { addContact } from '../../redux/contactsSlice';
 import { getContacts } from '../../redux/selectors';
 import { toast } from 'react-hot-toast';
 import { nanoid } from '@reduxjs/toolkit';
@@ -25,13 +25,14 @@ export const ContactForm = () => {
       return toast.success(`"${name}" is already in contacts.`);
     }
 
-    dispatch(
-      addContact({
-        id: nanoid(),
-        name,
-        number,
-      })
-    );
+    // dispatch(
+    //   addContact({
+    //     id: nanoid(),
+    //     name,
+    //     number,
+    //   })
+    // );
+
     form.reset();
   };
 
