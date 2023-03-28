@@ -13,6 +13,10 @@ const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 };
+const handleFulfilled = state => {
+  state.isLoading = false;
+  state.error = null;
+};
 
 export const contactsSlice = createSlice({
   name: 'contacts',
@@ -30,26 +34,22 @@ export const contactsSlice = createSlice({
     [editContact.pending]: handlePending,
 
     [fetchContacts.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
+      handleFulfilled(state);
       state.items = action.payload;
     },
     [addContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
+      handleFulfilled(state);
       state.items.push(action.payload);
     },
     [deleteContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
+      handleFulfilled(state);
       const index = state.items.findIndex(
         contact => contact.id === action.payload.id
       );
       state.items.splice(index, 1);
     },
     [editContact.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
+      handleFulfilled(state);
       const index = state.items.findIndex(
         contact => contact.id === action.payload.id
       );
