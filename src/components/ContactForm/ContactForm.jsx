@@ -1,10 +1,9 @@
 import React from 'react';
 import { FormStyled, FormLabel, Input, Button } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-// import { addContact } from '../../redux/contactsSlice';
+import { addContact } from '../../redux/operations';
 import { getContacts } from '../../redux/selectors';
 import { toast } from 'react-hot-toast';
-import { nanoid } from '@reduxjs/toolkit';
 
 const nameRegExp = "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 const phoneRegExp =
@@ -25,13 +24,12 @@ export const ContactForm = () => {
       return toast.success(`"${name}" is already in contacts.`);
     }
 
-    // dispatch(
-    //   addContact({
-    //     id: nanoid(),
-    //     name,
-    //     number,
-    //   })
-    // );
+    dispatch(
+      addContact({
+        name,
+        number,
+      })
+    );
 
     form.reset();
   };
